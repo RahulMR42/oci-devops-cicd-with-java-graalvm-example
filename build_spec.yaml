@@ -6,7 +6,8 @@ shell: bash
 env:
   # these are local variables to the build config
   variables:
-    key: "value"
+    graal_vm_version: "21.3.0"
+    code_repo_name: "oci-java-graalvm-devops-example"
 
   # the value of a vaultVariable is the secret-id (in OCI ID format) stored in the OCI Vault service
   # you can then access the value of that secret in your build_spec.yaml commands
@@ -28,9 +29,15 @@ steps:
 
   - type: Command
     timeoutInSeconds: 600
-    name: "Install Graal VM Prereqs"
+    name: "Build Prerequisites"
     command: |
+      cd ${OCI_WORKSPACE_DIR}/${code_repo_name}
       java -version
+      wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${graal_vm_version}/graalvm-ce-java17-linux-amd64-${graal_vm_version}.tar.gz
+      ls -l
+      ls -l */*
+
+
       
 # outputArtifacts:
 #   - name: output01
