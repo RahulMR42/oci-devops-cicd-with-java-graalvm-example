@@ -35,9 +35,9 @@ steps:
       java -version
       wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${graal_vm_version}/graalvm-ce-java17-linux-amd64-${graal_vm_version}.tar.gz
       tar zxf graalvm-ce-java17-linux-amd64-${graal_vm_version}.tar.gz
-      export PATH= $PATH:graalvm-ce-java17-${graal_vm_version}/bin
-      java -version
-
+      export java_graal_home=./graalvm-ce-java17-${graal_vm_version}/bin/
+      ${java_graal_home}/javac helloworld.java
+      ${java_graal_home}/java HelloWorld
 
       
 # outputArtifacts:
