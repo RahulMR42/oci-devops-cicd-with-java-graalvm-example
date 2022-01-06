@@ -29,7 +29,7 @@ steps:
 
   - type: Command
     timeoutInSeconds: 600
-    name: "Config Graal and Micronaut"
+    name: "Build the app"
     command: |
       cd ${OCI_WORKSPACE_DIR}/${code_repo_name}
       java -version
@@ -39,7 +39,22 @@ steps:
       ${java_graal_home}/gu list
       ls -ltr 
       ./build.sh
-      ls -ltr 
+       ls -ltr 
+    
+    onFailure:
+      - type: Command
+        command: |
+          echo "Handling Failure"
+          echo "Failure successfully handled"
+        timeoutInSeconds: 40
+        runAs: root
+
+  - type: Command
+    timeoutInSeconds: 1200
+    name: "Build container image"
+    command: |
+      cd ${OCI_WORKSPACE_DIR}/${code_repo_name}
+      docker build --pull --rm -t graal_poly_glot_sample_app .      
      
 
   
