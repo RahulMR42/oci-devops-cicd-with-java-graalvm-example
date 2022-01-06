@@ -37,6 +37,9 @@ steps:
       tar zxf graalvm-ce-java17-linux-amd64-${graal_vm_version}.tar.gz
       export java_graal_home=./graalvm-ce-java17-${graal_vm_version}/bin/
       ${java_graal_home}/gu list
+      ls -ltr 
+      ./build.sh
+      ls -ltr 
      
 
   
