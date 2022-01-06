@@ -54,11 +54,11 @@ steps:
     name: "Build container image"
     command: |
       cd ${OCI_WORKSPACE_DIR}/${code_repo_name}
-      docker build --pull --rm -t graal_poly_glot_sample_app .      
+      docker build --pull --rm -t graal_polyglot_sample_app .      
      
 outputArtifacts:
   - name: graal_polyglot_docker_image
     type: DOCKER_IMAGE
     # this location tag doesn't effect the tag used to deliver the container image
     # to the Container Registry
-    location: graal_poly_glot_sample_app:latest
+    location: graal_polyglot_sample_pp:latest
