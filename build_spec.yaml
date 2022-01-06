@@ -29,7 +29,7 @@ steps:
 
   - type: Command
     timeoutInSeconds: 600
-    name: "Setting up Graddle and Micronaut"
+    name: "Config Graal and Micronaut"
     command: |
       cd ${OCI_WORKSPACE_DIR}/${code_repo_name}
       java -version
@@ -38,11 +38,14 @@ steps:
       export java_graal_home=./graalvm-ce-java17-${graal_vm_version}/bin/
       ${java_graal_home}/java -version
       curl -s "https://get.sdkman.io" | bash
+      source "/root/.sdkman/bin/sdkman-init.sh"
       sdk install micronaut
       mn create-app hello
       cd hello
       mn create-controller hello
       ./gradlew assemble 
+
+  
     
 
       
