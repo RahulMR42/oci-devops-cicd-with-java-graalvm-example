@@ -38,8 +38,8 @@ steps:
       export java_graal_home=./graalvm-ce-java17-${graal_vm_version}/bin/
       ${java_graal_home}/gu list
       ls -ltr 
-      ./build.sh
-       ls -ltr 
+      npm install 
+      ls -ltr 
     
     onFailure:
       - type: Command
